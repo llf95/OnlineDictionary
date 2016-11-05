@@ -41,6 +41,8 @@ public class UI extends Application {
         listView.setItems(idlelist);
 
         button.setOnAction(e->{
+            listView.setItems(idlelist);
+            listView.scrollTo("a");
             String word = inputArea.getText();
             if(null == word || word.equals("")){
                 outputArea.clear();
@@ -65,6 +67,8 @@ public class UI extends Application {
                 outputArea.appendText(output);
                 recommend.setText("Similar words: ");
                 listView.setItems(idlelist);
+                word = word.toLowerCase();
+                word = Dictionary.trim(word);
                 listView.scrollTo(word);
             }
         });

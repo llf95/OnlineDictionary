@@ -179,7 +179,7 @@ public class Dictionary {
         }
         return s;
     }
-    private static String trim(String s){
+    public static String trim(String s){
         String temp = mergeBlank(s);
         if (temp.charAt(0) == ' ') {
             temp = temp.substring(1, temp.length());
