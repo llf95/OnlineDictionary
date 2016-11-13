@@ -11,8 +11,19 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
 
-public class Viewer extends Application{
+
+public class Client extends Application{
+    private static Socket server;
+    private BufferedReader in;
+    private PrintWriter out;
+
     private double height = 450;
     private double width = 600;
 
@@ -45,7 +56,8 @@ public class Viewer extends Application{
         button_reg.setLayoutX(350);
         button_reg.setLayoutY(220);
 
-        login.getChildren().addAll(label_user, label_psw, text_user, text_psw, button_log, button_reg, label_info);
+        login.getChildren().addAll(label_user, label_psw, text_user, text_psw,
+                button_log, button_reg, label_info);
     }
 
     private void setMainPane(Pane main){
@@ -56,7 +68,10 @@ public class Viewer extends Application{
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException{
+        server = new Socket(InetAddress.getLocalHost(), 1637);
+        in = new BufferedReader(new InputStreamReader(server.getInputStream()));
+        out = new PrintWriter(server.getOutputStream());
 
         Pane loginpane = new Pane();
         Pane mainpane = new Pane();
@@ -72,9 +87,23 @@ public class Viewer extends Application{
         Label           loginpane_label_info            = ((Label)loginpane.getChildren().get(6));
 
         loginpane_button_login.setOnAction(e -> {
-            if ("jxy".equals(loginpane_textfield_username.getText())
-                    && "jxy".equals(loginpane_textfield_password.getText())) {
-                scene.setRoot(mainpane);
+            out.println("req:login");
+            out.println(loginpane_textfield_username.getText());
+            out.println(loginpane_textfield_password.getText());
+            out.flush();
+            try {
+                String echo = in.readLine();
+                if(echo.equals("echo:login")){
+                    echo = in.readLine();
+                    if(echo.equals("succeed")) {
+                        scene.setRoot(mainpane);
+                    }
+                    else {
+                        loginpane_label_info.setText("登录失败");
+                    }
+                }
+            } catch (IOException ioe) {
+            } finally {
             }
         });
 
@@ -86,7 +115,11 @@ public class Viewer extends Application{
     }
 
 
-    public static void main(String[] args){
+
+
+
+
+    public static void main(String[] args) throws Exception {
         Application.launch(args);
     }
 }
