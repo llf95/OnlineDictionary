@@ -108,17 +108,6 @@ public class Dictionary {
                 return (o1.getValue()) - (o2.getValue());
             }
         });
-		/*
-		for (int i = 0; i < 5; i++) {
-			int j;
-			if(infoIds.get(0).getValue() == 0) j = i + 1;
-			else j = i;
-			if(infoIds.get(j).getValue() >= 5) break;
-		    res[i] = infoIds.get(j).getKey();
-		}
-		*/
-
-        //return res;
         for(int i = 0;i < infoIds.size(); i ++){
             res.add(infoIds.get(i).getKey());
         }
