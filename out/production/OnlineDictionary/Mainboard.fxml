@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainboardController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="426.0" minWidth="10.0" prefWidth="40.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="426.0" minWidth="0.0" prefWidth="377.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="184.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="98.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <GridPane prefHeight="302.0" prefWidth="333.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="300.0" prefWidth="300.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="85.0" minHeight="85.0" prefHeight="85.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="85.0" minHeight="85.0" prefHeight="85.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="85.0" minHeight="85.0" prefHeight="85.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <CheckBox id="fxCheck2" fx:id="fxCheck2" cacheShape="false" focusTraversable="false" mnemonicParsing="false" prefHeight="36.0" prefWidth="6.0" translateX="15.0" GridPane.rowIndex="1" />
+            <TextArea id="fxResult2" fx:id="fxResult2" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="250.0" translateX="120.0" GridPane.rowIndex="1">
+               <effect>
+                  <Bloom />
+               </effect></TextArea>
+            <CheckBox id="fxCheck3" fx:id="fxCheck3" cacheShape="false" focusTraversable="false" mnemonicParsing="false" prefHeight="36.0" prefWidth="19.0" translateX="15.0" GridPane.rowIndex="2" />
+            <TextArea id="fxResult1" fx:id="fxResult1" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="250.0" translateX="120.0">
+               <effect>
+                  <Bloom />
+               </effect></TextArea>
+            <TextArea id="fxResult3" fx:id="fxResult3" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="250.0" translateX="120.0" wrapText="true" GridPane.rowIndex="2">
+               <effect>
+                  <Bloom />
+               </effect></TextArea>
+            <CheckBox id="fxCheck1" fx:id="fxCheck1" cacheShape="false" focusTraversable="false" mnemonicParsing="false" prefHeight="36.0" prefWidth="11.0" translateX="15.0" />
+            <ImageView id="fxIcon1" fx:id="fxIcon1" fitHeight="71.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" translateX="40.0">
+               <image>
+                  <Image url="@baidu.png" />
+               </image></ImageView>
+            <ImageView id="fxIcon2" fx:id="fxIcon2" fitHeight="71.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@bing.png" />
+               </image></ImageView>
+            <ImageView id="fxIcon3" fx:id="fxIcon3" fitHeight="71.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@youdao.png" />
+               </image></ImageView>
+            <ImageView id="fxLike1" fx:id="fxLike1" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" translateX="-8.0" translateY="-4.0" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+               <image>
+                  <Image url="@thumb_up_before.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fxLike2" fx:id="fxLike2" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" translateX="-8.0" translateY="-4.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <image>
+                  <Image url="@thumb_up_before.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fxLike3" fx:id="fxLike3" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" translateX="-8.0" translateY="-4.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+               <image>
+                  <Image url="@thumb_up_before.png" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
+      <TextField id="fxSearchBar" fx:id="fxSearchBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="297.0" promptText="search" style="-fx-background-color: #EEEEEE;" translateX="100.0" translateY="15.0" GridPane.columnIndex="1" />
+      <ImageView id="fxSearchButton" fx:id="fxSearchButton" fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" translateX="375.0" translateY="15.0" GridPane.columnIndex="1">
+         <image>
+            <Image url="@search.png" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <children>
+            <Label id="fxWord" fx:id="fxWord" alignment="BOTTOM_CENTER" prefHeight="104.0" prefWidth="168.0" text="Word" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label id="fxPronBR" fx:id="fxPronBR" alignment="BOTTOM_RIGHT" prefHeight="37.0" prefWidth="150.0" text="BR_[prononciation]" />
+            <Label id="fxPronUS" fx:id="fxPronUS" alignment="BOTTOM_RIGHT" prefHeight="31.0" prefWidth="150.0" text="US_[prononciation]" />
+         </children>
+      </VBox>
+   </children>
+</GridPane>
