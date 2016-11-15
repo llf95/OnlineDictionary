@@ -1,41 +1,70 @@
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.io.InputStream;
 
 
 public class Client extends Application {
     public static Socket server;
+    private Stage stage = new Stage();
+    private Scene scene;
 
-
-
-    @Override
-    public void start(Stage primaryStage) throws IOException{
+    private void initClient() throws Exception {
         server = new Socket(InetAddress.getLocalHost(), 1637);
-        BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
-        PrintWriter out = new PrintWriter(server.getOutputStream());
+        FXMLLoader loader1 = new FXMLLoader();
+        loader1.setLocation(this.getClass().getResource("Login.fxml"));
+        loader1.load();
+        LoginController loginController = ((LoginController)loader1.getController());
+        loginController.setClient(this);
 
+        FXMLLoader loader2 = new FXMLLoader();
+        loader2.setLocation(this.getClass().getResource("Mainboard.fxml"));
+        loader2.load();
+        MainboardController mainboardController = ((MainboardController)loader2.getController());
+        mainboardController.setClient(this);
 
-
-        Parent loginBoard = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Parent mainBoard = FXMLLoader.load(getClass().getResource("Mainboard.fxml"));
-        Scene scene = new Scene(mainBoard);
-
-
-        primaryStage.setTitle("OnlineDictionary Beta v0.1");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        scene = new Scene(loader1.getRoot());
     }
 
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+//        BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
+//        PrintWriter out = new PrintWriter(server.getOutputStream());
+        initClient();
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("OnlineDictionary Beta v0.5");
+        stage = primaryStage;
+        stage.show();
+
+        //replaceSceneContent("Mainboard.fxml");
+        //replaceSceneContent("Login.fxml");
+
+
+    }
+
+    public void replaceSceneContent(String fxml) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        InputStream in = Client.class.getResourceAsStream(fxml);
+        loader.setBuilderFactory(new JavaFXBuilderFactory());
+        loader.setLocation(Client.class.getResource(fxml));
+        Pane page;
+        try {
+            page = (Pane) loader.load(in);
+        } finally {
+            in.close();
+        }
+        Scene scene = new Scene(page);
+        stage.setScene(scene);
+        stage.sizeToScene();
+    }
 
 
 

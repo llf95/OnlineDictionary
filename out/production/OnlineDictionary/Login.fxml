@@ -16,7 +16,7 @@
    <top>
       <StackPane id="fxLoginBoard" prefHeight="148.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="152.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" translateY="60.0">
+            <ImageView fitHeight="152.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@1186228.png" />
                </image></ImageView>
@@ -52,6 +52,6 @@
       </GridPane>
    </center>
    <bottom>
-      <Label id="fxLoginInfo" fx:id="fxLoginInfo" alignment="CENTER" focusTraversable="false" prefHeight="22.0" prefWidth="126.0" textAlignment="CENTER" textFill="#eb0909" textOverrun="CLIP" translateY="-20.0" BorderPane.alignment="CENTER" />
+      <Label id="fxLoginInfo" fx:id="fxLoginInfo" alignment="CENTER" focusTraversable="false" prefHeight="22.0" prefWidth="379.0" textAlignment="CENTER" textFill="#eb0909" textOverrun="CLIP" translateY="-20.0" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
