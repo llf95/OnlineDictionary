@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.io.InputStream;
@@ -13,11 +15,17 @@ import java.io.InputStream;
 
 public class Client extends Application {
     public static Socket server;
+    public static ObjectInputStream in;
+    public static ObjectOutputStream out;
+
     private Stage stage = new Stage();
     private Scene scene;
 
     private void initClient() throws Exception {
         server = new Socket(InetAddress.getLocalHost(), 1637);
+        out = new ObjectOutputStream(server.getOutputStream());
+        in = new ObjectInputStream(server.getInputStream());
+
         FXMLLoader loader1 = new FXMLLoader();
         loader1.setLocation(this.getClass().getResource("Login.fxml"));
         loader1.load();
@@ -35,8 +43,6 @@ public class Client extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-//        BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
-//        PrintWriter out = new PrintWriter(server.getOutputStream());
         initClient();
 
         primaryStage.setScene(scene);
@@ -44,8 +50,6 @@ public class Client extends Application {
         stage = primaryStage;
         stage.show();
 
-        //replaceSceneContent("Mainboard.fxml");
-        //replaceSceneContent("Login.fxml");
 
 
     }

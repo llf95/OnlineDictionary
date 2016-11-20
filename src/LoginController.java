@@ -1,14 +1,11 @@
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
-import java.net.Socket;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 /**
  * Created by Tony Jiang on 2016/11/14.
@@ -24,21 +21,40 @@ public class LoginController {
     @FXML private Label fxLoginInfo;
 
     @FXML
-    private void clickOnRegister() {
-        fxLoginInfo.setText("Register");
+    private void clickOnRegister() throws Exception{
+        String username = fxUsername.getText();
+        String password = fxPassword.getText();
+        RequestPackage rp = new RequestPackage();
+        rp.setType("req:register");
+        rp.addRequest(username);
+        rp.addRequest(password);
+
+        Client.out.writeObject(rp);
+        Client.out.flush();
+        ResponsePackage resPack = (ResponsePackage) Client.in.readObject();
+        if(resPack.getType().equals("res:register"))
+            fxLoginInfo.setText(resPack.getContent().elementAt(0));
     }
 
     @FXML
     private void clickOnLogin() throws Exception{
         String username = fxUsername.getText();
         String password = fxPassword.getText();
-        if("user".equals(username) && "user".equals(password))
+        RequestPackage reqPack = new RequestPackage();
+        reqPack.setType("req:login");
+        reqPack.addRequest(username);
+        reqPack.addRequest(password);
+        Client.out.writeObject(reqPack);
+        Client.out.flush();
+        ResponsePackage resPack = (ResponsePackage) Client.in.readObject();
+        if(resPack.getType().equals("res:login"))
+            fxLoginInfo.setText(resPack.getContent().elementAt(0));
+        if("Successfully login.".equals(resPack.getContent().elementAt(0))){
             client.replaceSceneContent("Mainboard.fxml");
-        else {
-            fxLoginInfo.setText("Wrong Username or Password");
         }
     }
 
     public void setClient(Client c) { this.client = c;}
+
 
 }

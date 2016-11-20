@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="javax.servlet.jsp.jstl-api">
+    <CLASSES>
+      <root url="jar://E:/Java/java_ee_sdk-7u2/glassfish4/glassfish/modules/javax.servlet.jsp.jstl-api.jar!/" />
+      <root url="jar://E:/Java/java_ee_sdk-7u2/glassfish4/glassfish/modules/javax.servlet.jsp.jstl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

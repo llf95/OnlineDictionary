@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.util.Vector;
 
 /**
  * Created by Tony Jiang on 2016/11/15.
  */
-public class RequestPackage {
+public class RequestPackage implements Serializable{
     private String type = "";
     private Vector<String> content = new Vector<String>();
 
@@ -19,4 +20,5 @@ public class RequestPackage {
     public Vector<String> getRequest() {
         return this.content;
     }
+
 }

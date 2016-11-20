@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.util.Vector;
 
 /**
  * Created by Tony Jiang on 2016/11/15.
  */
-public class ResponsePackage {
+public class ResponsePackage implements Serializable{
     private String type = "";
     private Vector<String> content = new Vector<String>();
     private Vector<String> affixInfo = new Vector<String>();
