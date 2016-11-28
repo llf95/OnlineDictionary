@@ -103,12 +103,13 @@ public class Server extends Thread {
                 RequestPackage reqPack = (RequestPackage) in.readObject();
                 if ("req:login".equals(reqPack.getType())) {
                     ResponsePackage resPack = reqLogin(reqPack);
+                    System.out.println("login here");
                     out.writeObject(resPack);
                     out.flush();
 
                 }
                 else if ("req:register".equals(reqPack.getType())) {
-                    //System.out.println("Register received!!!");
+                    System.out.println("Request received!!!");
                     ResponsePackage resPack = reqRegister(reqPack);
                     out.writeObject(resPack);
                     out.flush();

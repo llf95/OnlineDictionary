@@ -46,7 +46,7 @@ public class Client extends Application {
         initClient();
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("OnlineDictionary Beta v0.5");
+        primaryStage.setTitle("OnlineDictionary Beta v1.0");
         stage = primaryStage;
         stage.show();
 

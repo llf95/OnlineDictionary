@@ -118,7 +118,7 @@ public class OnlineFetch {
     public String getPron() { return "英：" + this.pron_BR + " 美：" + this.pron_US; }
 
     public static void main(String[] args) throws Exception{
-        OnlineFetch online_fetch = new OnlineFetch("gasdg");
+        OnlineFetch online_fetch = new OnlineFetch("home");
         Vector<String> baidu = online_fetch.getTranslationBaidu();
         Vector<String> youdao = online_fetch.getTranslationYoudao();
         Vector<String> bing = online_fetch.getTranslationBing();
