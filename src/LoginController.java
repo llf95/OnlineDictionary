@@ -1,16 +1,16 @@
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-/**
- * Created by Tony Jiang on 2016/11/14.
- */
-public class LoginController {
+public class LoginController implements Initializable{
     private Client client;
 
     @FXML private BorderPane fxLoginBoard;
@@ -29,9 +29,9 @@ public class LoginController {
         rp.addRequest(username);
         rp.addRequest(password);
 
-        Client.out.writeObject(rp);
-        Client.out.flush();
-        ResponsePackage resPack = (ResponsePackage) Client.in.readObject();
+        client.out.writeObject(rp);
+        client.out.flush();
+        ResponsePackage resPack = (ResponsePackage) client.in.readObject();
         if(resPack.getType().equals("res:register"))
             fxLoginInfo.setText(resPack.getContent().elementAt(0));
     }
@@ -44,17 +44,22 @@ public class LoginController {
         reqPack.setType("req:login");
         reqPack.addRequest(username);
         reqPack.addRequest(password);
-        Client.out.writeObject(reqPack);
-        Client.out.flush();
-        ResponsePackage resPack = (ResponsePackage) Client.in.readObject();
+        client.out.writeObject(reqPack);
+        client.out.flush();
+        ResponsePackage resPack = (ResponsePackage) client.in.readObject();
         if(resPack.getType().equals("res:login"))
             fxLoginInfo.setText(resPack.getContent().elementAt(0));
         if("Successfully login.".equals(resPack.getContent().elementAt(0))){
-            client.replaceSceneContent("Mainboard.fxml");
+            client.currentuser = username;
+            client.switchToMainboard();
         }
     }
 
     public void setClient(Client c) { this.client = c;}
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
+    }
 }

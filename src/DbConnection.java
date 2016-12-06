@@ -1,14 +1,10 @@
-import com.sun.rowset.CachedRowSetImpl;
 
 import javax.servlet.jsp.jstl.sql.Result;
 import javax.servlet.jsp.jstl.sql.ResultSupport;
-import javax.sql.RowSet;
+import java.io.InputStream;
 import java.sql.*;
 
 
-/**
- * Created by Tony Jiang on 2016/11/16.
- */
 public class DbConnection {
     private String dbUrl = "";
     private String dbUsername = "";
@@ -41,6 +37,20 @@ public class DbConnection {
         int ret = pstmt.executeUpdate();
         connection.close();
         return ret;
+    }
+    public int updateWithPictures(String sql_statement, InputStream in){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+            PreparedStatement pstmt = connection.prepareStatement(sql_statement);
+            pstmt.setBinaryStream(1, in);
+            int ret = pstmt.executeUpdate();
+            connection.close();
+            return ret;
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return -1;
     }
 
     public void test() {
