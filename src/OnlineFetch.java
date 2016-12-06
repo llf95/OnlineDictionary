@@ -1,6 +1,5 @@
 
 import java.net.URL;
-
 import java.util.Scanner;
 import java.util.Vector;
 import java.util.regex.Pattern;
@@ -10,7 +9,7 @@ import java.util.regex.Matcher;
 public class OnlineFetch {
     private String word = "";
 
-    private String baidu = "http://dict.baidu.com/s?wd=";
+    private String baidu = "http://www.iciba.com/";
     private String youdao = "http://dict.youdao.com/w/eng/";
     private String bing = "http://cn.bing.com/dict/search?q=";
 
@@ -43,15 +42,27 @@ public class OnlineFetch {
         sc_youdao.close();
     }
     private void fetchMeaningBaidu() throws Exception{
-        Pattern pattern = Pattern.compile("(?s)<div class=\"en-content\">.*?<div>.*?</div>");
+        Pattern pattern = Pattern.compile("(?s)<ul class=\"base-list switch_part\".*?>(.*?)</ul>");
         Matcher matcher = pattern.matcher(html_baidu);
         if (matcher.find()) {
-            String means = matcher.group();
-            Pattern getChinese = Pattern.compile("(?m)<p>.*?<strong>(.*?)</strong>.*?<span>(.*?)</span>");
+            String means = matcher.group(1);
+            Pattern getChinese = Pattern.compile("(?s)<li class=\"clearfix\">(.*?)<p>(.*?)</p>.*?</li>");
             Matcher m = getChinese.matcher(means);
-            while (m.find()) {
-                trans_baidu.add(m.group(1) + " " + m.group(2));
+            while (m.find()){
+                String prop = m.group(1);
+                String trans = m.group(2);
+                Pattern p1 = Pattern.compile("(?m)<span class=\"prop\">(.*?)</span>");
+                Matcher m1 = p1.matcher(prop);
+                if(m1.find()) prop = m1.group(1);
+                Pattern p2 = Pattern.compile("(?m)<span>(.*?)</span>");
+                Matcher m2 = p2.matcher(trans);
+                trans = "";
+                while(m2.find()){
+                    trans = trans + m2.group(1);
+                }
+                trans_baidu.add(prop + " " + trans);
             }
+
         }
     }
     private void fetchMeaningBing() throws Exception{
@@ -72,13 +83,14 @@ public class OnlineFetch {
         }
     }
     private void fetchMeaningYoudao() throws Exception{
-        Pattern pattern = Pattern.compile("(?s)<div class=\"trans-container\">.*?<ul>.*?</div>");
+        Pattern pattern = Pattern.compile("(?s)<div class=\"trans-container\">.*?<ul>.*?</ul>.*?</div>");
         Matcher matcher = pattern.matcher(html_youdao);
         if (matcher.find()) {
             String means = matcher.group();
             Pattern getChinese = Pattern.compile("(?m)<li>(.*?)</li>");
             Matcher m = getChinese.matcher(means);
             while (m.find()) {
+                if('<' == m.group(1).charAt(0)) return;
                 trans_youdao.add(m.group(1));
             }
         }
@@ -99,6 +111,8 @@ public class OnlineFetch {
     }
 
     OnlineFetch(String word) throws Exception {
+        word = word.trim();
+        word = word.replace(" ", "%20");
         this.word = word;
         baidu += word;
         youdao += word;

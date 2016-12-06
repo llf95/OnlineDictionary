@@ -1,8 +1,10 @@
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -15,8 +17,9 @@ import java.io.InputStream;
 
 public class Client extends Application {
     public static Socket server;
-    public static ObjectInputStream in;
-    public static ObjectOutputStream out;
+    public ObjectInputStream in;
+    public ObjectOutputStream out;
+    public String currentuser = "";
 
     private Stage stage = new Stage();
     private Scene scene;
@@ -49,12 +52,9 @@ public class Client extends Application {
         primaryStage.setTitle("OnlineDictionary Beta v1.0");
         stage = primaryStage;
         stage.show();
-
-
-
     }
 
-    public void replaceSceneContent(String fxml) throws Exception {
+    public Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         InputStream in = Client.class.getResourceAsStream(fxml);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
@@ -68,9 +68,33 @@ public class Client extends Application {
         Scene scene = new Scene(page);
         stage.setScene(scene);
         stage.sizeToScene();
+        return (Initializable)loader.getController();
     }
 
-
+    public void switchToLoginboard() throws Exception{
+        LoginController login = (LoginController) replaceSceneContent("Login.fxml");
+        login.setClient(this);
+    }
+    public void switchToMainboard() throws Exception {
+        MainboardController mainboard = (MainboardController) replaceSceneContent("Mainboard.fxml");
+        mainboard.setClient(this);
+    }
+    public void switchToOnlineUsers(WritableImage image) throws Exception{
+        OnlineDlgController onlineUsers = (OnlineDlgController) replaceSceneContent("OnlineDlg.fxml");
+        onlineUsers.setClient(this);
+        onlineUsers.setImage(image);
+        onlineUsers.showOnlineUsers();
+    }
+    public void switchToMail() throws Exception{
+        MailDlgController mails = (MailDlgController) replaceSceneContent("MailDlg.fxml");
+        mails.setClient(this);
+        mails.showMails();
+    }
+    public void switchToWordcard(WritableImage image) throws Exception{
+        WordcardDlgController wordcarddlg = (WordcardDlgController) replaceSceneContent("WordcardDlg.fxml");
+        wordcarddlg.setClient(this);
+        wordcarddlg.showWordcard(image);
+    }
 
 
 

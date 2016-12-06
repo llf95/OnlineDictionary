@@ -25,16 +25,7 @@
     <RowConstraints maxHeight="322.0" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="302.0" prefWidth="380.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="300.0" prefWidth="300.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="85.0" minHeight="85.0" prefHeight="85.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="85.0" minHeight="85.0" prefHeight="85.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="85.0" minHeight="85.0" prefHeight="85.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <VBox fx:id="fxResultArea" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <HBox id="fxBaiduBox" fx:id="fxBaiduBox" alignment="CENTER_LEFT" prefWidth="387.0">
                <children>
@@ -47,13 +38,14 @@
                         <Insets />
                      </HBox.margin>
                   </ImageView>
-                  <TextArea id="fxResult1" fx:id="fxBaiduResult" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="275.0" wrapText="true">
+                  <TextArea id="fxResult1" fx:id="fxBaiduResult" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="275.0" wrapText="true">
                      <HBox.margin>
                         <Insets left="10.0" />
-                     </HBox.margin></TextArea>
-                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="30.0">
+                     </HBox.margin>
+                  </TextArea>
+                  <VBox id="fxLikeArea1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="30.0">
                      <children>
-                        <ImageView id="fxLike1" fx:id="fxBaiduLike" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="fxLike1" fx:id="fxBaiduLike" fitHeight="26.0" fitWidth="26.0" onMouseClicked="#clickOnLikeBaidu" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@thumb_up_before.png" />
                            </image>
@@ -63,7 +55,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox id="fxBingBox" fx:id="fxBingBox" alignment="CENTER_LEFT" GridPane.rowIndex="1">
+            <HBox id="fxBingBox" fx:id="fxBingBox" alignment="CENTER_LEFT">
                <children>
                   <CheckBox id="fxCheck2" fx:id="fxBingCheck" cacheShape="false" focusTraversable="false" mnemonicParsing="false" prefHeight="36.0" prefWidth="6.0" />
                   <ImageView id="fxIcon2" fx:id="fxBingIcon" fitHeight="62.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
@@ -74,13 +66,14 @@
                         <Insets />
                      </HBox.margin>
                   </ImageView>
-                  <TextArea id="fxResult2" fx:id="fxBingResult" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="275.0" wrapText="true">
+                  <TextArea id="fxResult2" fx:id="fxBingResult" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="275.0" wrapText="true">
                      <HBox.margin>
                         <Insets left="10.0" />
-                     </HBox.margin></TextArea>
-                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="30.0">
+                     </HBox.margin>
+                  </TextArea>
+                  <VBox id="fxLikeArea2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="30.0">
                      <children>
-                        <ImageView id="fxLike2" fx:id="fxBingLike" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="fxLike2" fx:id="fxBingLike" fitHeight="26.0" fitWidth="26.0" onMouseClicked="#clickOnLikeBing" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@thumb_up_before.png" />
                            </image>
@@ -90,7 +83,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox id="fxYoudaoBox" fx:id="fxYoudaoBox" alignment="CENTER_LEFT" GridPane.rowIndex="2">
+            <HBox id="fxYoudaoBox" fx:id="fxYoudaoBox" alignment="CENTER_LEFT">
                <children>
                   <CheckBox id="fxCheck3" fx:id="fxYoudaoCheck" cacheShape="false" focusTraversable="false" mnemonicParsing="false" prefHeight="36.0" prefWidth="19.0" />
                   <ImageView id="fxIcon3" fx:id="fxYoudaoIcon" fitHeight="35.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
@@ -101,13 +94,14 @@
                         <Insets />
                      </HBox.margin>
                   </ImageView>
-                  <TextArea id="fxResult3" fx:id="fxYoudaoResult" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="275.0" wrapText="true">
+                  <TextArea id="fxResult3" fx:id="fxYoudaoResult" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="275.0" wrapText="true">
                      <HBox.margin>
                         <Insets left="10.0" />
-                     </HBox.margin></TextArea>
-                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="30.0">
+                     </HBox.margin>
+                  </TextArea>
+                  <VBox id="fxLikeArea3" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="30.0">
                      <children>
-                        <ImageView id="fxLike3" fx:id="fxYoudaoLike" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="fxLike3" fx:id="fxYoudaoLike" fitHeight="26.0" fitWidth="26.0" onMouseClicked="#clickOnLikeYoudao" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@thumb_up_before.png" />
                            </image>
@@ -118,32 +112,50 @@
                </children>
             </HBox>
          </children>
-      </GridPane>
-      <TextField id="fxSearchBar" fx:id="fxSearchBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="297.0" promptText="search" style="-fx-background-color: #EEEEEE;" translateX="80.0" GridPane.columnIndex="1" />
-      <ImageView id="fxSearchButton" fx:id="fxSearchButton" fitHeight="26.0" fitWidth="23.0" onMouseClicked="#clickOnSearch" pickOnBounds="true" preserveRatio="true" translateX="355.0" GridPane.columnIndex="1">
+      </VBox>
+      <TextField id="fxSearchBar" fx:id="fxSearchBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="297.0" promptText="search" style="-fx-background-color: #EEEEEE;" translateX="60.0" GridPane.columnIndex="1" />
+      <ImageView id="fxSearchButton" fx:id="fxSearchButton" fitHeight="26.0" fitWidth="23.0" onMouseClicked="#clickOnSearch" pickOnBounds="true" preserveRatio="true" translateX="335.0" GridPane.columnIndex="1">
          <image>
             <Image url="@search.png" />
          </image>
       </ImageView>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <children>
-            <Label id="fxWord" fx:id="fxWord" alignment="BOTTOM_CENTER" prefHeight="104.0" prefWidth="190.0" text="Word" wrapText="true">
+            <Label id="fxWord" fx:id="fxWord" alignment="BOTTOM_CENTER" prefHeight="104.0" prefWidth="190.0" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label id="fxPronBR" fx:id="fxPronBR" alignment="BOTTOM_CENTER" prefHeight="37.0" prefWidth="187.0" text="BR_[prononciation]" />
-            <Label id="fxPronUS" fx:id="fxPronUS" alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="191.0" text="US_[prononciation]" />
+            <Label id="fxPronBR" fx:id="fxPronBR" alignment="BOTTOM_CENTER" prefHeight="37.0" prefWidth="187.0" />
+            <Label id="fxPronUS" fx:id="fxPronUS" alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="191.0" />
          </children>
       </VBox>
       <VBox alignment="CENTER" prefHeight="98.0" prefWidth="184.0" GridPane.columnIndex="2">
          <children>
-            <ImageView id="fxCurrentUser" fx:id="fxCurrentUser" fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@user_49.008403361345px_1202292_easyicon.net.png" />
-               </image>
-            </ImageView>
-            <Label id="fxCurrentUsername" fx:id="fxCurrentUsername" alignment="CENTER" prefHeight="35.0" prefWidth="121.0" text="uesrname" />
+            <HBox alignment="CENTER_RIGHT" prefHeight="98.0" prefWidth="159.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="25.0" onMouseClicked="#clickOnMails" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@mail.png" />
+                     </image></ImageView>
+                  <ImageView fx:id="fxOnline" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#clickOnOnlineUsers" pickOnBounds="true" preserveRatio="true" translateX="3.0" translateY="-1.0">
+                     <image>
+                        <Image url="@online.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="fxLogout" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickOnLogout" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@leave.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="10.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
          </children>
       </VBox>
    </children>
