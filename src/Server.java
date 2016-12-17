@@ -1,7 +1,3 @@
-package server;
-
-import pack.RequestPackage;
-import pack.ResponsePackage;
 
 import javax.servlet.jsp.jstl.sql.Result;
 import java.awt.image.BufferedImage;
@@ -9,8 +5,6 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
-
-
 
 
 public class Server extends Thread {

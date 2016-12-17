@@ -1,6 +1,4 @@
-package client.controller;
 
-import client.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -9,8 +7,6 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import pack.RequestPackage;
-import pack.ResponsePackage;
 
 import java.net.URL;
 import java.util.ResourceBundle;

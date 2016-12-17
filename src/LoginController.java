@@ -1,6 +1,3 @@
-package client.controller;
-
-import client.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -8,8 +5,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import pack.RequestPackage;
-import pack.ResponsePackage;
 
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -1,4 +1,3 @@
-package server;
 
 import javax.servlet.jsp.jstl.sql.Result;
 import javax.servlet.jsp.jstl.sql.ResultSupport;

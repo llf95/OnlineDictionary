@@ -1,4 +1,3 @@
-package server;
 
 import java.net.URL;
 import java.util.Scanner;

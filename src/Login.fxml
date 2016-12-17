@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane id="LoginPane" fx:id="fxLoginBoard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.LoginController">
+<BorderPane id="LoginPane" fx:id="fxLoginBoard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <top>
       <StackPane id="fxLoginBoard" prefHeight="148.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="152.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@/1186228.png" />
+                  <Image url="@1186228.png" />
                </image></ImageView>
          </children>
       </StackPane>
@@ -39,13 +39,13 @@
             <TextField id="fxUsername" fx:id="fxUsername" focusTraversable="false" prefHeight="23.0" prefWidth="260.0" promptText="Username" style="-fx-background-color: #FFF0EE;" />
             <ImageView id="fxRegister" fx:id="fxRegister" fitHeight="26.0" fitWidth="26.0" onMouseClicked="#clickOnRegister" pickOnBounds="true" preserveRatio="true" translateX="175.0">
                <image>
-                  <Image url="@/add.png" />
+                  <Image url="@add.png" />
                </image>
             </ImageView>
             <PasswordField id="fxPassword" fx:id="fxPassword" focusTraversable="false" promptText="Password" style="-fx-background-color: #FFF0EE;" GridPane.rowIndex="1" />
             <ImageView id="fxLogin" fx:id="fxLogin" fitHeight="20.0" fitWidth="19.0" onMouseClicked="#clickOnLogin" pickOnBounds="true" preserveRatio="true" translateX="179.0" GridPane.rowIndex="1">
                <image>
-                  <Image url="@/forward.png" />
+                  <Image url="@forward.png" />
                </image>
             </ImageView>
          </children>

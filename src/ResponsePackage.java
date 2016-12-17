@@ -1,5 +1,3 @@
-package pack;
-
 import java.io.Serializable;
 import java.util.Vector;
 
