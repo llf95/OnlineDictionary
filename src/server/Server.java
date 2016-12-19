@@ -1,3 +1,7 @@
+package server;
+
+import pack.RequestPackage;
+import pack.ResponsePackage;
 
 import javax.servlet.jsp.jstl.sql.Result;
 import java.awt.image.BufferedImage;
